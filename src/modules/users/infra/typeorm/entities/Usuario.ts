@@ -15,7 +15,7 @@ import Local from '@modules/properties/infra/typeorm/entities/Local';
 @Entity('usuario')
 class Usuario {
   @PrimaryGeneratedColumn('increment')
-  id: string;
+  id: number;
 
   @Column()
   nome_completo: string;

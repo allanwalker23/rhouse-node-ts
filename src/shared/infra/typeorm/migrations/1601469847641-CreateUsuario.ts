@@ -10,6 +10,7 @@ export default class CreatUsuario1601469847641
           {
             name: 'id',
             type: 'int',
+            isUnique:true,
             isPrimary: true,
             isGenerated: true,
             generationStrategy: 'increment',

@@ -8,7 +8,9 @@ export default interface UpdateUserDTO{
     cpf:string;
     cep:string;
     bairro:string;
-    cidade:string;
+    
+    tipo_usuario:number;
+    senha:string;
     logradouro:string;
     complemento:string;
     numero:number;

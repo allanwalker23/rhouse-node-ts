@@ -8,6 +8,24 @@ import MD5Provider from '../providers/MD5Provider/models/MD5Provider';
 import MD5HashProvider from '../providers/MD5Provider/implementations/MD5HashProvider';
 import UpdateUserDTO from '../dtos/UpdateUserDTO';
 
+interface Request{
+  id:string;
+  nome_completo:string;
+  nome_usuario:string;
+  email:string;
+  telefone:string;
+  cpf:string;
+  cep:string;
+  bairro:string;
+  logradouro:string;
+  complemento:string;
+  numero:number;
+  sobre_voce:string;
+
+
+}
+
+
 @injectable()
 class UpdateUserService {
   constructor(
@@ -20,12 +38,11 @@ class UpdateUserService {
     cpf,
     cep,
     bairro,
-    cidade,
     logradouro,
     complemento,
     numero,
     sobre_voce,
-  }: UpdateUserDTO): Promise<Cliente> {
+  }: Request): Promise<Cliente> {
     
     const findEmail = await this.repository.findByEmail(email);
 
@@ -66,11 +83,13 @@ class UpdateUserService {
        nome_completo,
        nome_usuario,
        sobre_voce,
+       tipo_usuario:user.tipo_usuario,
+       senha:user.senha,
        telefone,
        numero,
        logradouro,
        complemento,
-       cidade
+       
         
     });
 

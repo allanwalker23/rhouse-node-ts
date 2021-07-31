@@ -59,22 +59,23 @@ usersRouter.post('/becomeLocatario/',ensureAuthenticated, async (request, respon
 });
 
 usersRouter.put('/', ensureAuthenticated, async (request, response) => {
-    const{id,bairro,cep,
-        cidade,complemento,cpf,email,logradouro,nome_completo,
+    const{bairro,cep,
+        complemento,cpf,email,logradouro,nome_completo,
         sobre_voce,numero,telefone,nome_usuario}=request.body;
 
     const updateUser= container.resolve(UpdateUserService);
 
+    console.log(nome_completo)
     const cliente = await updateUser.execute({
-       id,
+       id:request.user.id,
        bairro,
        cep,
-       cidade,
        complemento,
        cpf,
        email,
        logradouro,
-       nome_completo,sobre_voce,numero,telefone,nome_usuario
+       nome_completo,
+       sobre_voce,numero,telefone,nome_usuario
     })
 
     response.json(cliente)

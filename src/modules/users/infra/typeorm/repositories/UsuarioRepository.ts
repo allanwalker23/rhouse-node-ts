@@ -63,25 +63,33 @@ class UsuarioRepository implements UsersRepository{
         nome_completo,
         nome_usuario,
         sobre_voce,
-        telefone}:UpdateUserDTO):Promise<Usuario>{
+        telefone,
+        senha,
+        tipo_usuario,
+        complemento,
+        logradouro,
+        numero}:UpdateUserDTO):Promise<any>{
 
-        const user = this.ormRepository.create({
-            id,
-            bairro,
-            cep,
-            cpf,
-            email,
-            nome_completo,
-            nome_usuario,
-            sobre_voce,
-            telefone
+        const id2= Number(id)
+
+        return await this.ormRepository.save({
+            id:id2,
+            senha,
+            tipo_usuario,
+            bairro:bairro,
+            cep:cep,
+            cpf:cpf,
+            email:email,
+            nome_completo:nome_completo,
+            nome_usuario:nome_usuario,
+            sobre_voce:sobre_voce,
+            complemento:complemento,
+            logradouro:logradouro,
+            numero:numero,
+            telefone:telefone,
+
+
         })
-        
-
-        await this.ormRepository.save(user)
-
-        return user;
-
     }
 
     public async findOne(id:string):Promise<Usuario| undefined>{
